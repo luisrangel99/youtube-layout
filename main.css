@@ -1,0 +1,274 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: minmax(90px,90px) auto;
+    grid-template-rows: 60px auto;
+    grid-template-areas: "header header"
+                         "menu contenido";
+    transition: all .3s ease;
+}
+
+.container.active{
+    grid-template-columns: minmax(300px,18%) auto;
+}
+
+/* -------------   Header   ----------------- */
+
+.header {
+    grid-area: header;
+    padding: 0px 20px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    justify-content: space-between;
+    grid-gap: 20px;
+    grid-template-areas: "logo search icons";
+}
+
+.header .container-logo {
+    grid-area: logo;
+    display: flex;
+    align-items: center;
+}
+
+.header .container-logo .btn-menu {
+    border: none;
+    padding: 10px;
+    background: none;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 100px;
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+}
+
+.header .container-logo .btn-menu:hover{
+    background: #e7e7e7;
+}
+
+.header .container-logo .logo .quique {
+    background: #ff0000;
+    padding: 7px 12px;
+    border-radius: 4px;
+    font-size: 18px;
+    color: #fff;
+    position: relative;
+    top: 2px;
+    margin-right: 4px;
+}
+
+.header .container-logo .logo {
+    font-size: 20px;
+    position: relative;
+    top: 2px;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
+.header .container-search {
+    grid-area: search;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header .container-search input {
+    min-width: 60%;
+    padding: 0px 15px;
+    height: 35px;
+    line-height: 35px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    font-family: sans-serif;
+}
+
+.header .container-search button {
+    height: 35px;
+    border: 1px solid #ccc;
+    border-left: none;
+    color: #545454;
+    background: #f8f8f8;
+    padding: 0px 25px;
+    cursor: pointer;
+}
+
+.header .container-search button:hover{
+    background: #f5f5f5;
+}
+
+.header .container-thumb {
+    grid-area: icons;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header .container-thumb button {
+    background: none;
+    border: none;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    padding: 7px 12px;
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+.header .container-thumb button:hover {
+    background: #e7e7e7;
+}
+
+.header .container-thumb .avatar {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.header .container-thumb .avatar img {
+    vertical-align: top;
+    width: 100%;
+    border-radius: 100px;
+}
+
+/* ---------------- Menu ---------------- */
+
+.menu {
+    grid-area: menu;
+    background: #fff;
+    overflow: hidden;
+}
+
+.menu a {
+    display: block;
+    padding: 15px 35px;
+    color: #000;
+    text-decoration: none;
+    min-width: 800px;
+}
+
+.menu a:hover {
+    background: #e5e5e5;
+}
+
+.menu a.active{
+    background: #e5e5e5;
+    font-weight: bold;
+}
+
+.menu .quique {
+    color: #606060;
+    margin-right: 32px;
+    width: 20px;
+    text-align: center;
+} 
+
+.menu a.active .quique {
+    color: #ff0000;
+}
+
+.menu hr {
+    margin: 20px 0px;
+    border: 1px solid #dfdfdf;
+}
+
+
+/* --------------- contenido ----------------- */
+
+.contenido {
+    grid-area: contenido;
+    background: #f9f9f9;
+    padding: 40px;
+}
+
+.contenido h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.contenido .grid-videos {
+    display: grid;
+    grid-gap: 40px 20px;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.contenido .box {
+    width: 500px;
+    height: 120px;
+    background: #545454;
+    color: #fff;
+}
+
+.contenido .grid-videos .video {
+    width: 100%;
+    display: block;
+}
+
+.contenido .grid-videos .video div {
+    width: 100%;
+}
+
+/* ------------ MediaQuery --------------- */
+@media screen and ( max-width: 1200px ) {
+    .contenido .grid-videos {
+        grid-template-columns: repeat(3,1fr);
+    }
+    .header .container-logo .logo span {
+        display: none;
+    }
+    .header .container-search input {
+        min-width: 70%;
+    }
+}
+
+@media screen and (max-width:999px){
+    .contenido .grid-videos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width:768px) {
+    .container {
+        grid-template-rows: auto;
+    }
+
+    .header {
+        padding: 20px;
+        grid-template-columns: auto auto;
+        justify-content: space-between;
+        grid-template-areas: "logo icons"
+                             "search  search";
+    }
+
+    .header .container-logo .logo span {
+        display: inline;
+    }
+
+    .header .container-search input {
+        min-width: auto;
+        width: 100%;
+    }
+
+    .contenido .grid-videos {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+
+}
+
+
+
+
